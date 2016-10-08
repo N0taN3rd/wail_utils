@@ -4,6 +4,7 @@ from argparse import ArgumentParser, ArgumentTypeError, Action
 
 from pywb.warc.archiveiterator import DefaultRecordParser
 from pywb.warc.cdxindexer import iter_file_or_dir
+from warctools.warc import  WarcRecord
 
 
 class FullPaths(Action):
@@ -38,10 +39,38 @@ def do_check(path):
         try:
             check_warc(path)
         except Exception as e:
+            print(e)
             ret.append({'error': str(e), 'file': path})
             print(path)
             continue
     print(json.dumps(ret))
+
+
+def do_check2(path):
+    for path, fname in iter_file_or_dir([path]):
+        print(path)
+        wr = WarcRecord.open_archive(path,gzip='auto')
+        try:
+            for (offset, record, errors) in wr.read_records(limit=None):
+                if errors:
+                    print("warc errors at %s:%d" % (fname, offset))
+                    print(errors)
+                    correct = False
+
+                    break
+                elif record is not None and record.validate():  # ugh name, returns errorsa
+                    print("warc errors at %s:%d" % (fname, offset))
+                    print(record.validate())
+                    correct = False
+                    break
+                it = 1
+        except Exception as e:
+                print("Exception: %s" % (str(e)))
+                correct = False
+        finally:
+            if wr: wr.close()
+            # print(offset,record,errors)
+        print('-------------------------------------')
 
 
 
@@ -54,6 +83,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     if args.d is not None:
-        do_check(args.d)
+        do_check2(args.d)
     else:
-        do_check(args.f)
+        do_check2(args.f)
