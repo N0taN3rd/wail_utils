@@ -107,9 +107,6 @@ class PageDetectWriterMixin(object):
             except Exception as exc:
                 import traceback
                 err_details = traceback.format_exc()
-                print(err_details)
-
-                print('error parsing metadata: ', parts[1])
                 continue
 
 

@@ -1,5 +1,6 @@
+import json
 import os
-from  detectSeed import detect_seed
+from detectSeed import detect_seed
 from argparse import ArgumentParser, ArgumentTypeError, Action
 from pywb.warc.cdxindexer import iter_file_or_dir
 
@@ -25,17 +26,14 @@ def is_file(path):
 
 
 def lister(path):
-    ret = []
+    ret = {"warcSeeds": [],"hadErrors": []}
     for path, fname in iter_file_or_dir([path]):
         try:
-            ret.append({'name': fname, 'seeds': detect_seed(path)})
+            ret['warcSeeds'].append({'name': fname,'filep': path, 'seeds': detect_seed(path)})
         except Exception as e:
-            print(e)
-            ret.append({'error': str(e), 'file': path})
-            print(path)
+            ret['hadErrors'].append({'error': str(e), 'name': fname, 'filep': path})
             continue
-    for it in ret:
-        print(it)
+    print(json.dumps(ret))
 
 
 if __name__ == '__main__':
