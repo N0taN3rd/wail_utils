@@ -5,8 +5,8 @@ block_cipher = None
 
 a = Analysis(['warcChecker.py'],
              pathex=['/home/john/PycharmProjects/wail_utils'],
-             binaries=None,
-             datas=None,
+             binaries=[],
+             datas=[],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],

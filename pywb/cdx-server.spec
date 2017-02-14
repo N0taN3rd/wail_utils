@@ -1,12 +1,24 @@
 # -*- mode: python -*-
+import os, os.path
+
+here = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+print(here)
 
 block_cipher = None
 
 
-a = Analysis(['listUris.py'],
-             pathex=['/home/john/PycharmProjects/wail_utils'],
-             binaries=[],
-             datas=[],
+
+added_files = [
+  ('%s/pywb/*.yaml'%here, '.'),
+  ('%s/static/'%here,'static'),
+  ('%s/templates/'%here,'templates'),
+  ('%s/pywb/uwsgi.ini'%here,'.')
+]
+
+a = Analysis(['cdx-server.py'],
+             pathex=['%s/pywb'%here],
+             binaries=None,
+             datas=None,
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
@@ -19,7 +31,7 @@ pyz = PYZ(a.pure, a.zipped_data,
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
-          name='listUris',
+          name='cdx-server',
           debug=False,
           strip=False,
           upx=True,
@@ -30,4 +42,4 @@ coll = COLLECT(exe,
                a.datas,
                strip=False,
                upx=True,
-               name='listUris')
+               name='cdx-server')
