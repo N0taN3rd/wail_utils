@@ -1,0 +1,33 @@
+language: python
+
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      python: 3.5
+      env: BUILDFOR=LINUX_12
+    - os: linux
+      sudo: required
+      dist: trusty
+      python: 3.5
+      env: BUILDFOR=LINUX_14
+    - os: osx
+      osx_image: xcode6.4
+      language: generic
+      env: BUILDFOR=OSX_10_10
+      before_install:
+        - brew update
+        - brew outdated openssl || brew upgrade openssl
+        - brew install python3
+        - python3 -m pip3 install -U pip setuptools wheel
+        - virtualenv env -p python3
+        - source env/bin/activate
+    - os: osx
+      osx_image: xcode8
+      language: generic
+      env: BUILDFOR=OSX_10_11
+      before_install:
+        - brew update
+        - brew install python3
+        - virtualenv env -p python3
+        - source env/bin/activate

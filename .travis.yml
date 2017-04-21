@@ -1,0 +1,22 @@
+language: python
+matrix:
+  include:
+  - os: osx
+    osx_image: xcode6.4
+    language: generic
+    env: BUILDFOR=OSX_10_10
+    before_install:
+    - brew update
+    - brew outdated openssl || brew upgrade openssl
+    - brew install python3
+    - python3 -m pip3 install -U pip setuptools wheel
+    - python3 -m pip3 install -r requirements.txt
+    script: ./make_it_so.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: hsaIidB7XqCq9hOjxIwlWMGjOD9BVl+3/wvgqnlS9Izv4nD0jZRbqRzRMcfcXk57+iPWYUzBmW8ASzdyPwlbm4QBmkJxsEHyJKq5GvI6NvWcuphnsjS1HrMNjVTsBlgUfohosh8rYYr2DQ6rK2uNwFkWs8MoQHZBPrAjr0j9OJkmWosbOKMd//OhoxXGrfEhz0NB8CnFS+d2lYAF3HAXgQKFmSzviC79QlrBzZlzKUI9//N7xvEWU8Uu7/Qzje3iSq+ngZLyE10v06oD/+M3k2PYi+ipDfLGP/OAx/t/ImpnVsmRn7c50y57jjsyBi9PmTK91ajNh5UBVM1ICUx+Z7jUN5jO2TIj6+w4OYvFhE9nbfZ4n+xElsGpk294fI8XdNE5KtsCuu4VEciIbZV7Agw3chTsU7OpnePdhDw24cLhtxM4IeyzYie0H6ctLwHdD4vIMOI8vWzW/foHNQHdFIK33plorEuqZXS/0YS/GGG690fPADjiXzRUknB5borizlt+59p2Z8zhuzj6nxW7BNYnCZ9pnUAr1+Rny4FiQ20Kzrov/0M6PDOE3SpoO2PIP5Y8UaV75QKBBi0/jQSJyNRT3EiCAldN1zzVxzNvH1S5/k2h4eqSmEp9UzrPWtxFDKihaHlqlOFjhACHztLpMGm9j8eiDswuGmxbtcgCHzE=
+  file: OSX_10_10.tar.gz
+  skip_cleanup: true
+  on:
+    repo: N0taN3rd/wail_utils

@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+
 here=$(pwd)
 realDistPath="$here/realDist"
 builtPath="$realDistPath/pywb"
 resources="$here/resources"
 pyinDistPath="$here/dist"
 specPath="$here/specs"
-
+tarPath="$BUILDFOR.tar.gz"
+distToTar="realDist/*"
 
 clean () {
 if [[ -d "build" ]]; then
@@ -53,8 +55,10 @@ build () {
   cp  ${pyinDistPath}/wb-manager/wb-manager ${builtPath}
   cp -r ${pyinDistPath}/warcChecker ${realDistPath}
   cp -r ${pyinDistPath}/listUris ${realDistPath}
+  tar -cvf ${tarPath} ${distToTar}
 }
 
 fclean
 build
 clean
+
