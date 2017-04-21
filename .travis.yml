@@ -8,9 +8,9 @@ matrix:
     before_install:
     - brew update
     - brew outdated openssl || brew upgrade openssl
-    - brew install python3
-    - python3 -m pip3 install -U pip setuptools wheel
-    - python3 -m pip3 install -r requirements.txt
+    - brew install python3.5
+    - pip3 install -U pip setuptools wheel
+    - pip3 install -r requirements.txt
     script: ./make_it_so.sh
 deploy:
   provider: releases
