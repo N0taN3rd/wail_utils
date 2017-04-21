@@ -8,7 +8,7 @@ matrix:
     before_install:
     - brew update
     - brew outdated openssl || brew upgrade openssl
-    - brew install python3
+    - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
     - pip3 install --upgrade pip setuptools wheel
     - pip3 install -r requirements.txt
     script: ./make_it_so.sh
