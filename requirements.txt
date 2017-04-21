@@ -7,7 +7,6 @@ chardet==2.3.0
 gevent==1.2.1
 Jinja2==2.8.1
 ordereddict==1.1
-pyamf==0.8.0
 PyInstaller==3.2.1
 pywb==0.33.1
 PyYAML==3.12
