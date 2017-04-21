@@ -8,10 +8,10 @@ matrix:
     before_install:
     - brew update
     - brew outdated openssl || brew upgrade openssl
+    - brew unlink pyenv
     - brew install pyenv
     - pyenv install 3.5.2
     - pyenv global 3.5.2
-    - pip3 install wheel
     - pip3 install -U pip setuptools wheel
     - pip3 install -r requirements.txt
     script: ./make_it_so.sh
