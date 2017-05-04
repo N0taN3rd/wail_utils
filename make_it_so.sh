@@ -7,8 +7,8 @@ builtPath="$realDistPath/pywb"
 resources="$here/resources"
 pyinDistPath="$here/dist"
 specPath="$here/specs"
-tarPath="$BUILDFOR.tar.gz"
-distToTar="realDist/*"
+tarPath="$here/$BUILDFOR.tar.gz"
+distToTar="$here/realDist/*"
 
 clean () {
 if [[ -d "build" ]]; then
