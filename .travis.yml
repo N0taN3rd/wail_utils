@@ -19,6 +19,10 @@ matrix:
         - brew update
         - brew outdated openssl || brew upgrade openssl
         - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
+        - brew unlink libxml2
+        - brew uninstall libxml2
+        - brew install --with-python libxml2
+        - brew link libxml2 --force
         - pip3 install --upgrade pip setuptools wheel
         - pip3 install -r requirements.txt
 script: ./make_it_so.sh
