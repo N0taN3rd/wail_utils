@@ -18,7 +18,7 @@ tldextract==2.0.2
 ujson==1.35
 urllib3==1.13.1
 uwsgi==2.0.15
-waitress==1.0.1
+waitress==1.4.0
 watchdog==0.8.3
 webassets==0.12.1
 webencodings==0.5.1
