@@ -9,7 +9,7 @@ chardet==2.3.0
 gevent==1.2.1
 Jinja2==2.8.1
 ordereddict==1.1
-PyInstaller==3.2.1
+PyInstaller==3.6
 pywb==0.33.2
 PyYAML==5.4
 requests==2.12.4
