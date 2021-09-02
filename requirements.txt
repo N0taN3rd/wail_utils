@@ -10,7 +10,7 @@ gevent==1.2.1
 Jinja2==2.8.1
 ordereddict==1.1
 PyInstaller==3.2.1
-pywb==0.33.2
+pywb==2.6.0
 PyYAML==5.4
 requests==2.12.4
 setuptools==32.3.1
