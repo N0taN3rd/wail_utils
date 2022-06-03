@@ -1,7 +1,7 @@
 six==1.10.0
 surt==0.3.0
 boto==2.48.0
-bottle==0.12.13
+bottle==0.12.20
 brotli==0.6.0
 brotlipy==0.6.0
 certauth==1.1.3
