@@ -13,7 +13,7 @@ PyInstaller==3.2.1
 pywb==0.33.2
 PyYAML==5.4
 requests==2.12.4
-setuptools==32.3.1
+setuptools==65.5.1
 tldextract==2.0.2
 ujson==1.35
 urllib3==1.13.1
